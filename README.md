@@ -71,14 +71,17 @@ Download the [Vagrantfile](https://raw.githubusercontent.com/mitthu/cmpsc473_spr
 
 ### FAQs
 **Why does it take so long to start?**
+
 The first time you create and setup a project, it will go and download the base image of Ubuntu to bootstrap the OS. This should only happen once. All susequent project setups will reuse the downloaded image.
 
-**What are the resource requirements for the project VM's?
+**What are the resource requirements for the project VM's?**
+
 Each created VM will be given:
 - 1 cpu core
 - 512 MB RAM
 - About 2 GB hard-disk space (will remain even if you `halt` the VM)
 
 **VM fails to boot**
+
 Make sure you are using a 64-bit operaitng system.
 
