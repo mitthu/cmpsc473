@@ -13,10 +13,6 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.memory = 512
   end
  
-  # Ubuntu shell provisionar fix
-  # https://github.com/mitchellh/vagrant/issues/1673
-  # config.vm.provision :shell, :inline => "sed -i '/tty/!s/mesg n/tty -s \\&\\& mesg n/' /root/.profile"
-
   # Automatically use local apt-cacher-ng if available
   if File.exists? "/etc/apt-cacher-ng"
     # If apt-cacher-ng is installed on this machine then just use it.
