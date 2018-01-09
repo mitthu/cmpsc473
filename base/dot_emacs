@@ -1,0 +1,22 @@
+(setq c-basic-offset 4)
+(setq c-offsets-alist
+'((substatement-open . 0)
+  (statement-block-intro . +)
+  (defun-open . 0)
+  (defun-block-intro . +)
+  (brace-list-intro . +)
+  (case-label . +)))
+
+(setq standard-indent 4)
+(setq scroll-step 1)
+(setq scroll-conservatively 10000)
+(setq-default indent-tabs-mode nil)
+(line-number-mode 1)
+(column-number-mode 1)
+(global-font-lock-mode t)
+(custom-set-variables
+ '(load-home-init-file t t))
+(custom-set-faces)
+
+;; backup in one place. flat, no tree structure
+(setq backup-directory-alist '(("" . "~/.emacs.d/emacs-backup")))
