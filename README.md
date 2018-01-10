@@ -60,11 +60,11 @@ or not commonly used. To see all subcommands, run the command
 
 ### Prepare Environment
 
-This step is an optional but it will speed up the initialization process.
+This step will speed up the first time initialization process.
 
 * Download the base image of ubuntu from - 
 https://vagrantcloud.com/ubuntu/boxes/xenial64/versions/20180105.0.0/providers/virtualbox.box
-* Run the following on terminal (or cmd.exe)
+* Run the following in terminal (or cmd.exe)
 ```shell
 vagrant box add --name "ubuntu/xenial64" <path_to_download>/virtualbox.box
 ```
