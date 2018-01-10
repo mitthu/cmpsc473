@@ -4,3 +4,6 @@
 
 # Vim Swap Files
 *.swp
+
+# Ignore vagrant box files
+*.box
