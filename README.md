@@ -58,6 +58,17 @@ or not commonly used. To see all subcommands, run the command
 
 **Windows:** Open cmd.exe (type cmd.exe in the search box of start menu) and type `vagrant help`. If the installation was successful, then a help menu like above (Linux section) will be displayed.
 
+### Prepare Environment
+
+This step is an optional but it will speed up the initialization process.
+
+* Download the base image of ubuntu from - 
+https://vagrantcloud.com/ubuntu/boxes/xenial64/versions/20180105.0.0/providers/virtualbox.box
+* Run the following on terminal (or cmd.exe)
+```shell
+vagrant box add --name "ubuntu/xenial64" <path_to_download>/virtualbox.box
+```
+
 ### Basic Commands
 Download the [Vagrantfile](https://raw.githubusercontent.com/mitthu/cmpsc473_spring18/master/base/Vagrantfile) and save it in your project directory.
 
