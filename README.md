@@ -81,6 +81,14 @@ Your project folder contains a file named **Vagrantfile**. This file is used by 
 
 * `vagrant destroy` **DESTROY** the VM that was created. You will lose all files created inside the VM. However any files inside the `/vagrant` diriectory will be left untouched.
 
+### Working on Your Project
+Once you have completed the setup of `vagrant`, you can use the following tips to maximize your productivity -
+
+- The project folder on your computer gets shared with your VM. Once inside the VM (using `vagrant ssh`), any modifications to files in `/vagrant` directory gets mirrored to your actual project directory (on your host computer). This means you can modify your project files using an IDE or any editor on your (host) computer. Subsequently you can compile & run the project inside the VM.
+- You may also use `emacs`/`vim`/`nano` inside the VM to make modifications to project files. 
+- Useful `vim` shortcuts:
+  * `Ctrl+n` (in insert mode): auto-complete the current variable/function/word.
+
 ### FAQs
 **Why does it take so long to start?**
 
