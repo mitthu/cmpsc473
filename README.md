@@ -70,7 +70,8 @@ vagrant box add --name "ubuntu/xenial64" <path_to_download>/virtualbox.box
 ```
 
 ### Basic Commands
-Download the [Vagrantfile](https://raw.githubusercontent.com/mitthu/cmpsc473_spring18/master/base/Vagrantfile) and save it in your project directory.
+<!-- Download the [Vagrantfile](https://raw.githubusercontent.com/mitthu/cmpsc473_spring18/master/base/Vagrantfile) and save it in your project directory. -->
+Your project folder contains a file named **Vagrantfile**. This file is used by `vagrant` to setup your project environment. Before you use any of the following commands, make sure you are in the project directory using `cd <path_to_project_dir>`.
 
 * `vagrant up` Use the Vagrantfile in the current directory and setup the development environment. If this command was previously used, then start the previous virtual machine.
 
