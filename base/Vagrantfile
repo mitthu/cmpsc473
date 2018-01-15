@@ -26,7 +26,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Update to have the latest packages, remove if you don't need that
   config.vm.provision :shell, :inline => "apt-get update"
   config.vm.provision :shell, :inline => "apt-get install -y build-essential gcc-multilib emacs htop gdb"
+  
+  # For user: ubuntu
   config.vm.provision :shell, :inline => "echo 'cd /vagrant' >>/home/ubuntu/.bashrc"
   config.vm.provision :shell, :inline => "curl http://www.cse.psu.edu/~tuz68/.emacs 2>/dev/null >/home/ubuntu/.emacs; chown ubuntu:ubuntu /home/ubuntu/.emacs"
   config.vm.provision :shell, :inline => "curl https://raw.githubusercontent.com/mitthu/cmpsc473_spring18/master/base/dot_vimrc 2>/dev/null >/home/ubuntu/.vimrc; chown ubuntu:ubuntu /home/ubuntu/.vimrc"
+
+  # For user: vagrant
+  config.vm.provision :shell, :inline => "echo 'cd /vagrant' >>/home/vagrant/.bashrc"
+  config.vm.provision :shell, :inline => "curl http://www.cse.psu.edu/~tuz68/.emacs 2>/dev/null >/home/vagrant/.emacs; chown vagrant:vagrant /home/vagrant/.emacs"
+  config.vm.provision :shell, :inline => "curl https://raw.githubusercontent.com/mitthu/cmpsc473_spring18/master/base/dot_vimrc 2>/dev/null >/home/vagrant/.vimrc; chown vagrant:vagrant /home/vagrant/.vimrc"
 end
