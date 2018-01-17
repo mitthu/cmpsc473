@@ -12,7 +12,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
     vb.cpus = 1
     vb.memory = 512
   end
- 
+
   # Automatically use local apt-cacher-ng if available
   if File.exists? "/etc/apt-cacher-ng"
     # If apt-cacher-ng is installed on this machine then just use it.
@@ -22,7 +22,7 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
       config.vm.provision :shell, :inline => "echo 'Acquire::http { Proxy \"http://#{guessed_address.ip_address}:3142\"; };' > /etc/apt/apt.conf.d/02proxy"
     end
   end
-  
+
   # Fix: ttyname failed: Inappropriate ioctl for device
   # Link: https://superuser.com/questions/1160025/how-to-solve-ttyname-failed-inappropriate-ioctl-for-device-in-vagrant
   config.ssh.shell = "bash -c 'BASH_ENV=/etc/profile exec bash'"
@@ -30,14 +30,9 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # Update to have the latest packages, remove if you don't need that
   config.vm.provision :shell, :inline => "apt-get update"
   config.vm.provision :shell, :inline => "apt-get install -y build-essential gcc-multilib emacs htop gdb"
-  
-  # For user: ubuntu
-  config.vm.provision :shell, :inline => "echo 'cd /vagrant' >>/home/ubuntu/.bashrc"
-  config.vm.provision :shell, :inline => "curl http://www.cse.psu.edu/~tuz68/.emacs 2>/dev/null >/home/ubuntu/.emacs; chown ubuntu:ubuntu /home/ubuntu/.emacs"
-  config.vm.provision :shell, :inline => "curl https://raw.githubusercontent.com/mitthu/cmpsc473_spring18/master/base/dot_vimrc 2>/dev/null >/home/ubuntu/.vimrc; chown ubuntu:ubuntu /home/ubuntu/.vimrc"
 
-  # For user: vagrant
-  #config.vm.provision :shell, :inline => "echo 'cd /vagrant' >>/home/vagrant/.bashrc"
-  #config.vm.provision :shell, :inline => "curl http://www.cse.psu.edu/~tuz68/.emacs 2>/dev/null >/home/vagrant/.emacs; chown vagrant:vagrant /home/vagrant/.emacs"
-  #config.vm.provision :shell, :inline => "curl https://raw.githubusercontent.com/mitthu/cmpsc473_spring18/master/base/dot_vimrc 2>/dev/null >/home/vagrant/.vimrc; chown vagrant:vagrant /home/vagrant/.vimrc"
+  # For all users
+  config.vm.provision :shell, :inline => "for i in `ls /home`; do echo 'cd /vagrant' >>/home/${i}/.bashrc; done"
+  config.vm.provision :shell, :inline => "for i in `ls /home`; do curl http://www.cse.psu.edu/~tuz68/.emacs 2>/dev/null >/home/${i}/.emacs; chown ${i}:${i} /home/${i}/.emacs; done"
+  config.vm.provision :shell, :inline => "for i in `ls /home`; do curl https://raw.githubusercontent.com/mitthu/cmpsc473_spring18/master/base/dot_vimrc 2>/dev/null >/home/${i}/.vimrc; chown ${i}:${i} /home/${i}/.vimrc; done"
 end
